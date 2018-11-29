@@ -172,26 +172,21 @@ def req_attr(
 
 
 @req_attr
-def test_sync_del_member(
+def test_some_api_router(
         **kwargs: Dict,
 ) -> None:
     path = kwargs.pop('path')
     json = dict(
-        school_name="",
-        school_id=1,
-        opt_user_id=1,
-        opt_user_name="",
+        a_str_field="",
+        an_int_field=1,
     )
     r = post(path, json=json)
     log_fmt_http(r)
-    assert r.status_code == 400
+    assert r.status_code == 200
 
 
 def main() -> None:
-    test_sync_add_class()
-    test_sync_add_member()
-    test_sync_del_member()
-    test_sync_app_order()
+    test_some_api_router()
 
 
 if __name__ == '__main__':
